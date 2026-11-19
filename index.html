@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eduardo Sanchez · Portafolio Zettafuego</title>
+    <style>
+      html, body { margin: 0; background: #050505; color: #fff; font-family: system-ui, sans-serif; }
+      #boot-hint {
+        display: none;
+        position: fixed; inset: 0; z-index: 9999;
+        align-items: center; justify-content: center;
+        padding: 24px; text-align: center;
+        background: #050505;
+      }
+      #boot-hint.show { display: flex; }
+      #boot-hint .box {
+        max-width: 420px; border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px; padding: 28px 24px; background: #0a0a0a;
+      }
+      #boot-hint h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 12px; color: #e879f9; }
+      #boot-hint p { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.65); margin: 0 0 10px; }
+      #boot-hint code {
+        display: block; margin-top: 14px; padding: 12px 14px;
+        background: #111; border-radius: 8px; font-size: 12px;
+        color: #7dd3fc; text-align: left; white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="boot-hint" role="alert">
+      <div class="box">
+        <h1>No se pudo cargar la app</h1>
+        <p>Este portafolio necesita el servidor de desarrollo. No abras <strong>index.html</strong> con doble clic.</p>
+        <p>En una terminal, dentro de la carpeta del proyecto:</p>
+        <code>start.bat</code>
+        <p style="margin-top:14px">O manualmente:</p>
+        <code>npm.cmd run dev</code>
+        <p style="margin-top:14px">Luego abre <strong>http://localhost:5173</strong></p>
+      </div>
+    </div>
+    <script>
+      // Si React no monta en ~2.5s (p. ej. file:// sin Vite), muestra ayuda
+      setTimeout(function () {
+        var root = document.getElementById('root');
+        var hint = document.getElementById('boot-hint');
+        if (root && hint && !root.childElementCount) {
+          hint.classList.add('show');
+        }
+      }, 2500);
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
